@@ -18,7 +18,7 @@ func Equal(t *testing.T, obtained, expected interface{}, message ...interface{})
 		t.Error(append(message, []interface{}{
 			"\n",
 			"obtained:", obtained, "\n",
-			"expected:", expected, "\n"}...))
+			"expected:", expected, "\n"}...)...)
 	}
 }
 
@@ -30,6 +30,6 @@ func DeepEqual(t *testing.T, obtained, expected interface{}, message ...interfac
 		t.Error(append(message, []interface{}{
 			"\n",
 			"obtained:", obtained, "\n",
-			"expected:", expected, "\n"}...))
+			"expected:", expected, "\n"}...)...)
 	}
 }
