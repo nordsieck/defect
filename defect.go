@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// Similar to errors.New(), but can be a const
 type Error string
 
 var _ error = Error("")
