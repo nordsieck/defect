@@ -1,7 +1,10 @@
 package defect
 
 import (
+	"path/filepath"
 	"reflect"
+	"runtime"
+	"strconv"
 	"testing"
 )
 
@@ -18,6 +21,7 @@ func Equal(t *testing.T, obtained, expected interface{}, message ...interface{})
 	if obtained != expected {
 		t.Error(append(message, []interface{}{
 			"\n",
+			lineAndFile(2),
 			"obtained:", obtained, "\n",
 			"expected:", expected, "\n"}...)...)
 	}
@@ -30,7 +34,15 @@ func DeepEqual(t *testing.T, obtained, expected interface{}, message ...interfac
 	if !reflect.DeepEqual(obtained, expected) {
 		t.Error(append(message, []interface{}{
 			"\n",
+			lineAndFile(2),
 			"obtained:", obtained, "\n",
 			"expected:", expected, "\n"}...)...)
 	}
+}
+
+func lineAndFile(skip int) string {
+	if _, file, line, ok := runtime.Caller(skip); ok {
+		return filepath.Base(file) + ":" + strconv.Itoa(line) + "\n"
+	}
+	return ""
 }
