@@ -20,7 +20,7 @@ func (e Error) Error() string { return string(e) }
 func Equal(t *testing.T, obtained, expected interface{}, message ...interface{}) {
 	if obtained != expected {
 		t.Error(append(message, []interface{}{
-			"\n",
+			"\r\t",
 			lineAndFile(2),
 			"obtained:", obtained, "\n",
 			"expected:", expected, "\n"}...)...)
@@ -33,7 +33,7 @@ func Equal(t *testing.T, obtained, expected interface{}, message ...interface{})
 func DeepEqual(t *testing.T, obtained, expected interface{}, message ...interface{}) {
 	if !reflect.DeepEqual(obtained, expected) {
 		t.Error(append(message, []interface{}{
-			"\n",
+			"\r\t",
 			lineAndFile(2),
 			"obtained:", obtained, "\n",
 			"expected:", expected, "\n"}...)...)
